@@ -1,0 +1,199 @@
+@font-face {
+  font-family: 'Alagard'; /* Define um nome para a fonte */
+  src: url('font/alagard.ttf') format('opentype'); /* Caminho para a fonte */
+}
+
+@font-face {
+  font-family: '8-bit Arcade In'; 
+  src: url('font/8-bit\ Arcade\ In.ttf') format('opentype'); 
+}
+
+body {
+  /* Define as configurações padrão para o corpo do documento */
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #bdce70;
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url('img/istockphoto-1500336889-170667a.jpg') repeat-x;
+  background-size: cover;
+}
+
+#morcego {
+  position: absolute;
+  width: 60px; /* Ajusta a largura do morcego */
+  height: 60px; /* Ajusta a altura do morcego */
+  background: url('img/bird-flap-animation.gif') no-repeat center center;
+  background-size: contain; /* Mantém a proporção da imagem */
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  filter: drop-shadow(0px 0px 5px #cecece);
+}
+
+.pipe {
+  position: absolute;
+  width: 60px;
+  height: 300px;
+  background: linear-gradient(45deg, #8b8b8b 25%, #6d6d6d 25%, #686868 75%, #5c5c5c 75%, #646464),
+              linear-gradient(to bottom, #aad8e6 50%, #a0c9de 50%);
+  background-size: 20px 20px, 100% 100%;
+  bottom: 0;
+  animation: movePipe 3s linear infinite; /* Diminuir o tempo de animação aumenta a velocidade do tubo */
+  z-index: 5;
+  border-radius: 20px;
+  border: 2px solid grey;
+}
+
+.pipe.top {
+  bottom: auto;
+  top: 0;
+}
+
+.pipe.paused {
+  animation-play-state: paused;
+}
+
+.bird {
+  position: absolute;
+  width: 50px; /* Ajusta a largura do pássaro */
+  height: 40px; /* Ajusta a altura do pássaro */
+  background: url('img/passaro.gif') no-repeat center center;
+  background-size: contain; /* Mantém a proporção da imagem */
+  z-index: 7;
+  animation: moveObstacle 2s linear infinite; /* Aumenta a velocidade do pássaro */
+}
+
+.cloud {
+  position: absolute;
+  width: 150px; /* Ajusta a largura da nuvem */
+  height: 90px; /* Ajusta a altura da nuvem */
+  background: url('img/nuvem.gif') no-repeat center center;
+  background-size: contain; /* Mantém a proporção da imagem */
+  opacity: 0.8;
+  z-index: 7;
+  animation: moveObstacle 5s linear infinite; /* Aumenta a velocidade da nuvem */
+}
+
+#score {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #FDDC00;
+  font-family: 'Alagard', Arial, sans-serif;
+  z-index: 15;
+  text-shadow: 2px 2px 7px #494949;
+}
+
+@keyframes deflate {
+    0% { transform: translate(-50%) scale(1.5); }
+    100% { transform: translate(-50%) scale(1); }
+}
+
+#score.deflate {
+    animation: deflate 0.2s forwards;
+}
+
+@keyframes movePipe {
+  from {
+      left: 100%;
+  }
+  to {
+      left: -60px;
+  }
+}
+
+@keyframes moveObstacle {
+  from {
+      left: 100%;
+  }
+  to {
+      left: -60px;
+  }
+}
+
+#initial-screen,
+#death-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'alagard', Arial, sans-serif;
+  font-size: 24px;
+  z-index: 20;
+  text-shadow: 2px 2px 7px #000000;
+}
+
+#death-screen {
+  display: none;
+}
+
+#initial-screen img {
+  width: 500px;
+  height: auto;
+  margin-bottom: 30px;
+  position: center;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#initial-screen p {
+  animation: blink 1s infinite;
+}
+
+#death-screen h2 {
+  color: #FDDC00; 
+  margin-top: 10px;
+}
+
+#death-screen p {
+  animation: blink 1s infinite;
+}
+
+#record {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #FDDC00;
+  font-family: 'Alagard', Arial, sans-serif;
+  z-index: 15;
+  text-shadow: 2px 2px 7px #494949;
+  display: flex;
+  flex-direction: column;
+}
+
+#initial-record {
+  font-size: 24px;
+  color: #FDDC00;
+  font-family: 'Alagard', Arial, sans-serif;
+  z-index: 15;
+  text-shadow: 2px 2px 7px #494949;
+  font-size: 3rem;
+  animation: none !important;
+  margin-top: -30px;
+}

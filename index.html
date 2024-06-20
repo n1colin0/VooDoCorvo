@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voo do Corvo!</title>
+    <link rel="stylesheet" href="style.css"> <!-- Liga este documento HTML com o arquivo de estilo CSS -->
+</head>
+<body>
+    <!-- Contém todos os elementos do jogo -->
+    <div id="game">
+        <!-- Representa o morcego -->
+        <div id="morcego"></div>
+        
+        <!-- Exibe a pontuação atual -->
+        <div id="score">0</div>
+
+        <!-- Exibe o recorde de pontuações do jogador -->
+        <div id="record">Recorde: 0</div>
+        
+        <!-- Exibida quando o jogo é inicializado -->
+        <div id="initial-screen">
+            <img src="img/o_voo_do_corvo.png" alt="LOGO DO CORVO">
+            <p id="initial-record"></p>
+            <p>Pressione "Espaço" para começar</p>
+        </div>
+
+        <!-- Exibida quando o morcego é atingido -->
+        <div id="death-screen">
+            <h1>Morrestes 💀</h1>
+            <h2>Sua pontuação: <span id="final-score"></span></h2>
+            <p>Pressione "Espaço" para reiniciar</p>
+        </div>
+    </div>
+
+    <!-- Músicas do jogo -->
+    <audio id="background-music" loop>
+        <source src="audio/y2meta.com - Super Mario World Music - Sub Castle (256 kbps).mp3" type="audio/mpeg">
+    </audio> <!-- musica de fundo -->
+
+    <audio id="jump-music">
+        <source src="audio/pulo.mp3" type="audio/mpeg">
+    </audio> <!-- som de pulo -->
+
+    <audio id="end-music">
+        <source src="audio/tubular-bell-of-death-89485.mp3" type="audio/mpeg">
+    </audio> <!-- som de morte -->
+
+    <!-- Script que contém a lógica do jogo -->
+    <script src="script.js"></script>
+</body>
+</html>
