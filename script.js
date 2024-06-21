@@ -2,7 +2,7 @@ let morcego, game, scoreDisplay, initialScreen, deathScreen, finalScore, recordD
 let backgroundMusic, jumpMusic, endMusic;
 let morcegoY, gameInterval, pipeInterval, obstacleInterval, score, backgroundPositionX, gameOver, gameStarted, record;
 const gravity = 0.5; // Aumenta a gravidade
-const lift = -6; // Diminui a força do pulo
+const lift = -8; // Diminui a força do pulo
 let velocity = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -99,7 +99,7 @@ function gameLoop() {
     obstacles.forEach(obstacle => {
         let obstacleRect = obstacle.getBoundingClientRect();
         let morcegoRect = morcego.getBoundingClientRect();
-        let buffer = 5;
+        let buffer = obstacle.classList.contains('cloud') ? 20 : 5; // Aumenta o buffer para as nuvens
         if (
             morcegoRect.right - buffer - hitboxBuffer > obstacleRect.left &&
             morcegoRect.left + buffer + hitboxBuffer < obstacleRect.right &&
